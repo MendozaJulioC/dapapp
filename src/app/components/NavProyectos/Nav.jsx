@@ -5,7 +5,7 @@ import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 import { signIn, signOut } from "next-auth/react"
 const navigation = [
   { name: 'Home', href: '/dashboard' },
-  { name: 'Datos Iniciales', href: '/proyectos/dashproyectos' },
+  { name: 'Registrar Proyectos', href: '/proyectos/dashproyectos' },
   { name: 'Metas Proyectos', href: '/proyectos/dashproyectos/metasproyectos' },
   { name: 'Presupuesto por vigencia', href: '/proyectos/dashproyectos/presupuestoproyectos' },
 

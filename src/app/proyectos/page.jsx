@@ -2,6 +2,8 @@
 import { Fragment, useRef, useState } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
 import { ExclamationTriangleIcon } from '@heroicons/react/24/outline'
+import { Accordion } from 'flowbite-react';
+import { Card } from 'flowbite-react';
 
 
 export default function Example() {
@@ -295,12 +297,6 @@ hola prueba
       </Transition.Root>
 
 
-
-
-
-
-
-
 <aside id="logo-sidebar" className="fixed top-10 left-0 z-40 w-64 h-screen pt-20 transition-transform -translate-x-full bg-white border-r border-gray-200 sm:translate-x-0 dark:bg-gray-800 dark:border-gray-700" aria-label="Sidebar">
    <div class="h-full px-3 pb-4 overflow-y-auto bg-white dark:bg-gray-800">
       <ul class="space-y-2 font-medium">
@@ -370,106 +366,187 @@ hola prueba
 </aside>
 
 <div class="p-4 sm:ml-64">
-   <div class="p-4 border-2 border-gray-200 border-dashed rounded-lg dark:border-gray-700 mt-14">
-      <div class="grid grid-cols-3 gap-4 mb-4">
-         <div class="flex items-center justify-center h-24 rounded bg-gray-50 dark:bg-gray-800">
-            <p class="text-2xl text-gray-400 dark:text-gray-500">
-               <svg class="w-3.5 h-3.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
-                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 1v16M1 9h16"/>
-               </svg>
-            </p>
-         </div>
-         <div class="flex items-center justify-center h-24 rounded bg-gray-50 dark:bg-gray-800">
-            <p class="text-2xl text-gray-400 dark:text-gray-500">
-               <svg class="w-3.5 h-3.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
-                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 1v16M1 9h16"/>
-               </svg>
-            </p>
-         </div>
-         <div class="flex items-center justify-center h-24 rounded bg-gray-50 dark:bg-gray-800">
-            <p class="text-2xl text-gray-400 dark:text-gray-500">
-               <svg class="w-3.5 h-3.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
-                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 1v16M1 9h16"/>
-               </svg>
-            </p>
-         </div>
-      </div>
-      <div class="flex items-center justify-center h-48 mb-4 rounded bg-gray-50 dark:bg-gray-800">
-         <p class="text-2xl text-gray-400 dark:text-gray-500">
-            <svg class="w-3.5 h-3.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
-               <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 1v16M1 9h16"/>
-            </svg>
-         </p>
-      </div>
+   <div class="p-4 border-2 border-gray-200 border-dashed rounded-lg dark:border-gray-700 mt-20">
+
+  
       <div class="grid grid-cols-2 gap-4 mb-4">
-         <div class="flex items-center justify-center rounded bg-gray-50 h-28 dark:bg-gray-800">
-            <p class="text-2xl text-gray-400 dark:text-gray-500">
-               <svg class="w-3.5 h-3.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
-                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 1v16M1 9h16"/>
-               </svg>
+   
+    <Accordion>
+      <Accordion.Panel>
+        <Accordion.Title>
+          What is Flowbite?
+        </Accordion.Title>
+        <Accordion.Content>
+          <p className="mb-2 text-gray-500 dark:text-gray-400">
+            <p>
+              Flowbite is an open-source library of interactive components built on top of Tailwind CSS including buttons,
+              dropdowns, modals, navbars, and more.
             </p>
-         </div>
-         <div class="flex items-center justify-center rounded bg-gray-50 h-28 dark:bg-gray-800">
-            <p class="text-2xl text-gray-400 dark:text-gray-500">
-               <svg class="w-3.5 h-3.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
-                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 1v16M1 9h16"/>
-               </svg>
+          </p>
+          <p className="text-gray-500 dark:text-gray-400">
+            <p>
+              Check out this guide to learn how to 
             </p>
-         </div>
-         <div class="flex items-center justify-center rounded bg-gray-50 h-28 dark:bg-gray-800">
-            <p class="text-2xl text-gray-400 dark:text-gray-500">
-               <svg class="w-3.5 h-3.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
-                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 1v16M1 9h16"/>
-               </svg>
+            <a
+              className="text-cyan-600 hover:underline dark:text-cyan-500"
+              href="https://flowbite.com/docs/getting-started/introduction/"
+            >
+              <p>
+                get started
+              </p>
+            </a>
+            <p>
+              and start developing websites even faster with components on top of Tailwind CSS.
             </p>
-         </div>
-         <div class="flex items-center justify-center rounded bg-gray-50 h-28 dark:bg-gray-800">
-            <p class="text-2xl text-gray-400 dark:text-gray-500">
-               <svg class="w-3.5 h-3.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
-                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 1v16M1 9h16"/>
-               </svg>
+          </p>
+        </Accordion.Content>
+      </Accordion.Panel>
+      <Accordion.Panel>
+        <Accordion.Title>
+          Is there a Figma file available?
+        </Accordion.Title>
+        <Accordion.Content>
+          <p className="mb-2 text-gray-500 dark:text-gray-400">
+            <p>
+              Flowbite is first conceptualized and designed using the Figma software so everything you see in the library
+              has a design equivalent in our Figma file.
             </p>
+          </p>
+          <p className="text-gray-500 dark:text-gray-400">
+            <p>
+              Check out the
+            </p>
+            <a
+              className="text-cyan-600 hover:underline dark:text-cyan-500"
+              href="https://flowbite.com/figma/"
+            >
+              <p>
+                Figma design system
+              </p>
+            </a>
+            <p>
+              based on the utility classes from Tailwind CSS and components from Flowbite.
+            </p>
+          </p>
+        </Accordion.Content>
+      </Accordion.Panel>
+      <Accordion.Panel>
+        <Accordion.Title>
+          What are the differences between Flowbite and Tailwind UI?
+        </Accordion.Title>
+        <Accordion.Content>
+          <p className="mb-2 text-gray-500 dark:text-gray-400">
+            <p>
+              The main difference is that the core components from Flowbite are open source under the MIT license, whereas
+              Tailwind UI is a paid product. Another difference is that Flowbite relies on smaller and standalone
+              components, whereas Tailwind UI offers sections of pages.
+            </p>
+          </p>
+          <p className="mb-2 text-gray-500 dark:text-gray-400">
+            <p>
+              However, we actually recommend using both Flowbite, Flowbite Pro, and even Tailwind UI as there is no
+              technical reason stopping you from using the best of two worlds.
+            </p>
+          </p>
+          <p className="mb-2 text-gray-500 dark:text-gray-400">
+            Learn more about these technologies:
+          </p>
+          <ul className="list-disc pl-5 text-gray-500 dark:text-gray-400">
+            <li>
+              <a
+                className="text-cyan-600 hover:underline dark:text-cyan-500"
+                href="https://flowbite.com/pro/"
+              >
+                <p>
+                  Flowbite Pro
+                </p>
+              </a>
+            </li>
+            <li>
+              <a
+                className="text-cyan-600 hover:underline dark:text-cyan-500"
+                href="https://tailwindui.com/"
+                rel="nofollow"
+              >
+                <p>
+                  Tailwind UI
+                </p>
+              </a>
+            </li>
+          </ul>
+        </Accordion.Content>
+      </Accordion.Panel>
+    </Accordion>
+           
          </div>
+         <div class="grid grid-cols-4 gap-1 mb-4">
+                  <Card
+      className="max-w-sm"
+      href="#"
+    >
+      <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+        <p>
+          Noteworthy technology acquisitions 2021
+        </p>
+      </h5>
+      <p className="font-normal text-gray-700 dark:text-gray-400">
+        <p>
+          Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.
+        </p>
+      </p>
+    </Card>
+    <Card
+      className="max-w-sm"
+      href="#"
+    >
+      <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+        <p>
+          Noteworthy technology acquisitions 2021
+        </p>
+      </h5>
+      <p className="font-normal text-gray-700 dark:text-gray-400">
+        <p>
+          Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.
+        </p>
+      </p>
+    </Card>
+    <Card
+      className="max-w-sm"
+      href="#"
+    >
+      <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+        <p>
+          Noteworthy technology acquisitions 2021
+        </p>
+      </h5>
+      <p className="font-normal text-gray-700 dark:text-gray-400">
+        <p>
+          Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.
+        </p>
+      </p>
+    </Card>
+    <Card
+      className="max-w-sm"
+      href="#"
+    >
+      <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+        <p>
+          Noteworthy technology acquisitions 2021
+        </p>
+      </h5>
+      <p className="font-normal text-gray-700 dark:text-gray-400">
+        <p>
+          Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.
+        </p>
+      </p>
+    </Card>
+         
+         </div>
+
       </div>
-      <div class="flex items-center justify-center h-48 mb-4 rounded bg-gray-50 dark:bg-gray-800">
-         <p class="text-2xl text-gray-400 dark:text-gray-500">
-            <svg class="w-3.5 h-3.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
-               <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 1v16M1 9h16"/>
-            </svg>
-         </p>
-      </div>
-      <div class="grid grid-cols-2 gap-4">
-         <div class="flex items-center justify-center rounded bg-gray-50 h-28 dark:bg-gray-800">
-            <p class="text-2xl text-gray-400 dark:text-gray-500">
-               <svg class="w-3.5 h-3.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
-                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 1v16M1 9h16"/>
-               </svg>
-            </p>
-         </div>
-         <div class="flex items-center justify-center rounded bg-gray-50 h-28 dark:bg-gray-800">
-            <p class="text-2xl text-gray-400 dark:text-gray-500">
-               <svg class="w-3.5 h-3.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
-                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 1v16M1 9h16"/>
-               </svg>
-            </p>
-         </div>
-         <div class="flex items-center justify-center rounded bg-gray-50 h-28 dark:bg-gray-800">
-            <p class="text-2xl text-gray-400 dark:text-gray-500">
-               <svg class="w-3.5 h-3.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
-                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 1v16M1 9h16"/>
-               </svg>
-            </p>
-         </div>
-         <div class="flex items-center justify-center rounded bg-gray-50 h-28 dark:bg-gray-800">
-            <p class="text-2xl text-gray-400 dark:text-gray-500">
-               <svg class="w-3.5 h-3.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
-                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 1v16M1 9h16"/>
-               </svg>
-            </p>
-         </div>
-      </div>
+
    </div>
-</div>
+
 
       
     </>
