@@ -5,41 +5,50 @@ import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 import { signIn, signOut } from "next-auth/react"
 const navigation = [
   { name: 'Home', href: '/dashboard' },
-  { name: 'DAP', href: 'https://www.medellin.gov.co/es/departamento-administrativo-de-planeacion/' },
-  { name: 'DANE', href: 'https://www.dane.gov.co/index.php' },
-  { name: 'DNP', href: 'https://www.dnp.gov.co/' },
+  { name: 'Datos Iniciales', href: '/proyectos/dashproyectos' },
+  { name: 'Metas Proyectos', href: '/proyectos/dashproyectos/metasproyectos' },
+  { name: 'Presupuesto por vigencia', href: '/proyectos/dashproyectos/presupuestoproyectos' },
 
 ]
+
+import { useSession } from 'next-auth/react'
+import { redirect } from 'next/navigation'
 
 export default function Nav(props) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
+  const { data: session } = useSession({
+    required: true,
+    onUnauthenticated() {
+      redirect('/login')
+    },
+   
+  })
+
   return (
     <div className="bg-white">
       <header className="absolute  fixed top-0  inset-x-0 top-0 z-50">
-        <nav className="flex bg-gray-100 items-center fixed top-0  inset-x-0 top-0 z-50 justify-between p-2 lg:px-6" aria-label="Global">
-          
-          <div className="flex lg:flex-1">
-            <a href="/" className="-m-1.5 p-1.5">
-              <span className="sr-only">Your Company</span>
-              <img
-                className="h-20 w-auto"
-                src="https://cdnwordpresstest-f0ekdgevcngegudb.z01.azurefd.net/es/wp-content/themes/theme_alcaldia/logos/logo_footer.png"
-                alt=""
-              />
-            </a>
-          </div>
-
-          <div className="flex lg:hidden">
-            <button
-              type="button"
-              className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700"
-              onClick={() => setMobileMenuOpen(true)}
-            >
-              <span className="sr-only">Open main menu</span>
-              <Bars3Icon className="h-6 w-6" aria-hidden="true" />
-            </button>
-          </div>
+        <nav className="flex   bg-white items-center fixed top-0  inset-x-0 top-0 z-50 justify-between p-2 lg:px-6" aria-label="Global">
+        <div className="flex lg:flex-1">
+          <a href="/" className="-m-1.5 p-1.5">
+            <span className="sr-only">Your Company</span>
+            <img
+              className="h-20 w-auto"
+              src="https://cdnwordpresstest-f0ekdgevcngegudb.z01.azurefd.net/es/wp-content/themes/theme_alcaldia/logos/logo_footer.png"
+              alt=""
+            />
+          </a>
+        </div>
+      <div className="flex lg:hidden">
+        <button
+          type="button"
+          className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700"
+          onClick={() => setMobileMenuOpen(true)}
+        >
+          <span className="sr-only">Open main menu</span>
+          <Bars3Icon className="h-6 w-6" aria-hidden="true" />
+        </button>
+      </div>
 
           <div className="hidden lg:flex lg:gap-x-12">
             {navigation.map((item) => (
@@ -48,21 +57,17 @@ export default function Nav(props) {
               </a>
             ))}
           </div>
-  
-          <div className="hidden lg:flex lg:flex-1 lg:justify-end">
+            <div className="hidden lg:flex lg:flex-1 lg:justify-end">
             <div className=' flex items-center justify-between p-6 lg:px-20' >  
-              <a  className="text-sm font-semibold leading-6 text-gray-900">
-                {props.usuario} 
+              <a  className="text-sm font-bold leading-6 text-gray-900">
+                 { session?.user?.name }
               </a>
              </div>
             
-       
              <div className=' flex items-center justify-between p-6 lg:px-20' >  
 
-            {props.usuario ?(<>
-              {/* <a href="/login" className="text-sm font-semibold leading-6 text-gray-900">
-                   <span className='bg-rose-500' aria-hidden="true">       Salir                   </span>
-                </a> */}
+            {session ?(<>
+       
                 <button 
                   className="flex w-full justify-center rounded-md bg-slate-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-red-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 font-mono hover:font-mono"
                   onClick={signOut}
@@ -83,7 +88,7 @@ export default function Nav(props) {
       </header>
 
 
-   <Dialog as="div" className="lg:hidden" open={mobileMenuOpen} onClose={setMobileMenuOpen}>
+      <Dialog as="div" className="lg:hidden" open={mobileMenuOpen} onClose={setMobileMenuOpen}>
           <div className="fixed inset-0 z-50" />
           <Dialog.Panel className="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
             <div className="flex items-center justify-between">
@@ -129,7 +134,7 @@ export default function Nav(props) {
               </div>
             </div>
           </Dialog.Panel>
-        </Dialog>
+      </Dialog>
 
     </div>
   )

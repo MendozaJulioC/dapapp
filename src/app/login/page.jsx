@@ -22,7 +22,6 @@ if (status === "authenticated") {
 
 }
 
-
   const handleSubmit= async(e)=>{
     e.preventDefault();
     try {
@@ -41,15 +40,15 @@ if (status === "authenticated") {
 
   return (
       <>
-        <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8b  ">
-          <div className="sm:mx-auto sm:w-full sm:max-w-sm mt-12 ">
+        <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8b  border border-sky-500 ">
+          <div className="sm:mx-auto sm:w-full sm:max-w-sm mt-12  ">
             <img
               className="mx-auto w-[50%] w-auto"
               src="https://cdnwordpresstest-f0ekdgevcngegudb.z01.azurefd.net/es/wp-content/themes/theme_alcaldia/logos/logo_footer.png"
               alt="Your Company"
             />
           </div>
-          <div className="sm:mx-auto sm:w-full sm:max-w-sm">
+          <div className="sm:mx-auto sm:w-full sm:max-w-sm ">
             <h2 className="mt-10 text-center text-lg font-bold leading-9 tracking-tight text-gray-900 ">
               Iniciar sesión en su cuenta
             </h2>
