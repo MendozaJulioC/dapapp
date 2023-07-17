@@ -90,7 +90,7 @@ export default  async function Example() {
               <div>
                 <label
                   htmlFor="last-name"
-                  className="block text-sm font-semibold leading-6 text-gray-900"
+                  className="block text-sm font-semibold leading-6 text-gray-900 mt-6"
                 >
                   Tipo de Proyecto
                 </label>
@@ -112,7 +112,7 @@ export default  async function Example() {
                 >
                   Nombre del Proyecto
                 </label>
-                <div className="mt-1">
+                <div className="mt-2.5">
                   <input
                     type="text"
                     name="company"
@@ -124,7 +124,7 @@ export default  async function Example() {
               </div>
             </div>
 
-            <div className="sm:col-span-2 mt-2">
+            <div className="sm:col-span-2 mt-4">
               <label
                 htmlFor="message"
                 className="block text-sm font-semibold leading-6 text-gray-900"
