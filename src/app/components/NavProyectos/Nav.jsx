@@ -3,7 +3,9 @@ import { useState } from 'react'
 import { Dialog } from '@headlessui/react'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 import { signIn, signOut } from "next-auth/react"
+import Link from 'next/link'
 const navigation = [
+
   { name: 'Home', href: '/dashboard' },
   { name: 'Registrar Proyectos', href: '/proyectos/dashproyectos' },
   { name: 'Metas Proyectos', href: '/proyectos/dashproyectos/metasproyectos' },
@@ -16,7 +18,6 @@ import { redirect } from 'next/navigation'
 
 export default function Nav(props) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
-
   const { data: session } = useSession({
     required: true,
     onUnauthenticated() {
@@ -27,11 +28,11 @@ export default function Nav(props) {
 
   return (
     <div className="bg-white">
-      <header className="absolute  fixed top-0  inset-x-0 top-0 z-50">
-        <nav className="flex   bg-white items-center fixed top-0  inset-x-0 top-0 z-50 justify-between p-2 lg:px-6" aria-label="Global">
+      <header className="  fixed top-0  inset-x-0  z-50">
+        <nav className="flex   bg-white items-center fixed   inset-x-0 top-0 z-50 justify-between p-2 lg:px-6" aria-label="Global">
         <div className="flex lg:flex-1">
           <a href="/" className="-m-1.5 p-1.5">
-            <span className="sr-only">Your Company</span>
+            <span className="sr-only">DAP app</span>
             <img
               className="h-20 w-auto"
               src="https://cdnwordpresstest-f0ekdgevcngegudb.z01.azurefd.net/es/wp-content/themes/theme_alcaldia/logos/logo_footer.png"
@@ -49,12 +50,16 @@ export default function Nav(props) {
           <Bars3Icon className="h-6 w-6" aria-hidden="true" />
         </button>
       </div>
-
           <div className="hidden lg:flex lg:gap-x-12">
             {navigation.map((item) => (
-              <a key={item.name} href={item.href} className="text-sm font-semibold leading-6 text-gray-900">
-                {item.name}
-              </a>
+              // <a key={item.name} href={item.href} className="text-sm font-semibold leading-6 text-gray-900">
+              //   {item.name}
+              // </a>
+
+              <Link key={item.name} href={item.href} className='text-sm font-semibold leading-6 text-gray-90'>
+                   {item.name}
+              </Link>
+
             ))}
           </div>
             <div className="hidden lg:flex lg:flex-1 lg:justify-end">
@@ -63,11 +68,8 @@ export default function Nav(props) {
                  { session?.user?.name }
               </a>
              </div>
-            
              <div className=' flex items-center justify-between p-6 lg:px-20' >  
-
-            {session ?(<>
-       
+              {session ?(<>
                 <button 
                   className="flex w-full justify-center rounded-md bg-slate-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-red-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 font-mono hover:font-mono"
                   onClick={signOut}
