@@ -16,7 +16,7 @@ export default function Nav(props) {
 
   return (
     <div className="bg-white">
-      <header className="absolute  fixed top-0  inset-x-0 top-0 z-50">
+      <header className="  fixed  inset-x-0 top-0 z-50">
         <nav className="flex bg-gray-100 items-center fixed top-0  inset-x-0 top-0 z-50 justify-between p-2 lg:px-6" aria-label="Global">
           
           <div className="flex lg:flex-1">
@@ -51,12 +51,17 @@ export default function Nav(props) {
   
           <div className="hidden lg:flex lg:flex-1 lg:justify-end">
             <div className=' flex items-center justify-between p-6 lg:px-20' >  
-              <a  className="text-sm font-semibold leading-6 text-gray-900">
-                {props.usuario} 
+              <a  className="text-sm font-semibold leading-6 text-gray-900"></a>
+            </div>
+             
+             <div className=' flex items-center justify-between p-6 lg:px-20' >  
+              <a  className="text-sm font-semibold leading-6 text-gray-900 mr-4">
+               <b>  {props.usuario}  </b> 
               </a>
+              <img src=  {props.avatar} alt=""   width={50} height={50}  className='rounded-full shadow-lg'/>
              </div>
             
-       
+    
              <div className=' flex items-center justify-between p-6 lg:px-20' >  
 
             {props.usuario ?(<>

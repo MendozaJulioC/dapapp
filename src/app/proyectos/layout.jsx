@@ -8,9 +8,7 @@ const DateoLayout = ({children}) => {
   return (
     <div className=" mt-2">
      <Nav />
-
-
-        {children}
+       {children}
     </div>
   )
 }
