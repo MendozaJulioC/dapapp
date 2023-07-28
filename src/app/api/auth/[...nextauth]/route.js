@@ -18,21 +18,16 @@ export const authOPtions = {
                 const {email, password} =credentials;
                 const res =  await  fetch(`https://j4ch.kratiaanalitik.net/api/auth/validate/email/${email}`);
                 const user = await res.json()
-                
                 const isPasswordMatched = await bcrypt.compare(password, user.data[0].password)
                 if (!isPasswordMatched) {
                    throw new Error('Error');
                    return null
                 }else{
-
                     return {
                     "id":  user.data[0].id_user,
                     "name":  user.data[0].nom_user,
                     "email": user.data[0].email,
-                  
                   }
-
-                  
                 }   
             }
         }), 
@@ -47,19 +42,32 @@ export const authOPtions = {
             return token;
 
         }, async session ({session}){
-            // console.log('session', {session});
+          // console.log('session', {session});
+          //console.log(session);
             return session;
+
+
         },
-        async signIn({profile}){
-            try {  
-                 console.log('profile: ',profile);
-                return true;
-            } catch (error) {
-                console.log(error);
-                return false;
+        async signIn({ account, profile }) {
+          
+            if (account.provider === "google") {
+                console.log(profile.email_verified);
+
+                if(profile.email_verified==true){ 
+                   
+                    const res =  await  fetch(`https://j4ch.kratiaanalitik.net/api/auth/validate/email/${profile.email}`);
+                    const user = await res.json()
+                    console.log(user);
+                    if(user){return true}
+                
+             }
+              
+            
             }
-        
-        }
+
+            
+            return true // Do different verification for other providers that don't have `email_verified`
+          }
 
 
     },

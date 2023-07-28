@@ -79,7 +79,7 @@ export default function Nav(props) {
                
              
               </a>
-              <img src=  {imageavatar} alt=""   width={50} height={50}  className='rounded-full shadow-lg'/>
+              <img src=  {imageavatar} alt=""   width={60} height={60}  className='rounded-full shadow-lg'/>
             </div>
             <div className=" flex items-center justify-between p-6 lg:px-20">
               {session ? (
