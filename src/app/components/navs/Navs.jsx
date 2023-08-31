@@ -4,6 +4,8 @@ import { Dialog } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import { signIn, signOut } from "next-auth/react";
 import { Avatar, Dropdown } from "flowbite-react";
+
+
 const navigation = [
   { name: "Home", href: "/dashboard" },
   {
@@ -12,6 +14,7 @@ const navigation = [
   },
   { name: "DANE", href: "https://www.dane.gov.co/index.php" },
   { name: "DNP", href: "https://www.dnp.gov.co/" },
+
 ];
 
 export default function Nav(props) {

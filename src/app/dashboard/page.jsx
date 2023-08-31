@@ -1,12 +1,60 @@
 'use client'
 
-
+import { useEffect, useState } from "react";
 import { signOut } from "next-auth/react"
 import { HiOutlineArrowsExpand } from 'react-icons/hi'
 import Link from "next/link"
 
 const Page = () => {
- 
+
+useEffect(()=>{ getAvancePlan()})
+const [avanceplan, setAvancePlan]= useState(null)
+const [finanzas, setFinanzas]= useState(null)
+const [corte, setCorte]= useState(null)
+
+
+async function getAvancePlan(){
+  try {
+    const res = await fetch(`https://api.avanzamedellin.info/pi/api/total`);
+    const avance = await res.json();
+    setAvancePlan(parseFloat(avance.data[0].total_plan).toFixed(2))
+    getEjecucionFinanciera()
+
+
+  } catch (error) {
+    console.error(' Error getAvancePlan:', error);
+  }
+}
+
+
+async function getEjecucionFinanciera (){
+  try {
+
+    const res = await fetch(`https://api.avanzamedellin.info/pa/api/avancefinanciero`);
+    const finanzas = await res.json();
+    let avancefinanzas = ( (parseFloat(finanzas.data[0].pptoejecutado))/parseFloat(finanzas.data[0].pptoajustado)  )*100
+    setFinanzas(parseFloat(avancefinanzas).toFixed(2))
+    getCorte()
+  } catch (error) {
+    console.error('Error getEjecucionFinanciera: ', error);
+  }
+}
+
+async function getCorte(){
+  try {
+    const res = await fetch(`https://api.avanzamedellin.info/pi/api/avance/corte`)
+    const corteactual = await res.json();
+    let corteavance= new Date(corteactual.data[0].corte) 
+    let mesavance = corteavance.getMonth(corteavance)+1
+    let dia = corteavance.getDate()
+    corteavance.setDate(dia+1)
+    setCorte( corteavance.toLocaleDateString("en-US", { day:'numeric',month : 'short',year: 'numeric' }));
+  } catch (error) {
+    console.error('Error getCorte: ', error);
+  }
+}
+
+
   return (
     <>
       <section className=" bg-gray-100">
@@ -22,7 +70,7 @@ const Page = () => {
                     </p>
                     <p className="mt-6 flex items-baseline justify-center gap-x-2">
                       <span className="text-5xl font-bold tracking-tight text-gray-900">
-                        74.98
+                   {avanceplan}
                       </span>
                       <span className="text-sm font-semibold leading-6 tracking-wide text-gray-600">
                         %
@@ -34,8 +82,7 @@ const Page = () => {
                         <Link href="/dashplan">   Get access</Link>
                     </button>
                     <p className="mt-6 text-xs leading-5 text-gray-600">
-                      Invoices and receipts available for easy company
-                      reimbursement
+                   {corte} 
                     </p>
                   </div>
                 </div>
@@ -74,7 +121,7 @@ const Page = () => {
                     </p>
                     <p className="mt-6 flex items-baseline justify-center gap-x-2">
                       <span className="text-5xl font-bold tracking-tight text-gray-900">
-                        51
+                     {finanzas}
                       </span>
                       <span className="text-sm font-semibold leading-6 tracking-wide text-gray-600">
                         %
@@ -86,8 +133,7 @@ const Page = () => {
                         <Link href="/dashplan">   Get access</Link>
                     </button>
                     <p className="mt-6 text-xs leading-5 text-gray-600">
-                      Invoices and receipts available for easy company
-                      reimbursement
+                    {corte} 
                     </p>
                   </div>
                 </div>
@@ -130,9 +176,9 @@ const Page = () => {
                     className="w-6 h-6"
                   >
                     <path
-                      fill-rule="evenodd"
+                      fillRule="evenodd"
                       d="M9 4.5a.75.75 0 01.721.544l.813 2.846a3.75 3.75 0 002.576 2.576l2.846.813a.75.75 0 010 1.442l-2.846.813a3.75 3.75 0 00-2.576 2.576l-.813 2.846a.75.75 0 01-1.442 0l-.813-2.846a3.75 3.75 0 00-2.576-2.576l-2.846-.813a.75.75 0 010-1.442l2.846-.813A3.75 3.75 0 007.466 7.89l.813-2.846A.75.75 0 019 4.5zM18 1.5a.75.75 0 01.728.568l.258 1.036c.236.94.97 1.674 1.91 1.91l1.036.258a.75.75 0 010 1.456l-1.036.258c-.94.236-1.674.97-1.91 1.91l-.258 1.036a.75.75 0 01-1.456 0l-.258-1.036a2.625 2.625 0 00-1.91-1.91l-1.036-.258a.75.75 0 010-1.456l1.036-.258a2.625 2.625 0 001.91-1.91l.258-1.036A.75.75 0 0118 1.5zM16.5 15a.75.75 0 01.712.513l.394 1.183c.15.447.5.799.948.948l1.183.395a.75.75 0 010 1.422l-1.183.395c-.447.15-.799.5-.948.948l-.395 1.183a.75.75 0 01-1.422 0l-.395-1.183a1.5 1.5 0 00-.948-.948l-1.183-.395a.75.75 0 010-1.422l1.183-.395c.447-.15.799-.5.948-.948l.395-1.183A.75.75 0 0116.5 15z"
-                      clip-rule="evenodd"
+                      clipRule="evenodd"
                     />
                   </svg>
                 </div>
@@ -143,11 +189,16 @@ const Page = () => {
                 <p className="text-gray-700">
                   Indice Multidimensional de Condiciones de Calidada de Vida
                 </p>
-                            <button className="flex items-center justify-center px-3 py-1 text-center text-sm font-semibold  bg-gray-300 w-48 text-white rounded-md mx-auto  mt-12  mb-6  hover:bg-gray-400  mt-10 block  rounded-md bg-cyan-600  text-sm font-semibold  shadow-sm hover:bg-indigo-500 focus-visible:outline  ">
+                  <button
+                   className="flex items-center justify-center px-3 py-1 text-center text-sm font-semibold  bg-gray-300 w-48 text-white mx-auto  mt-12  mb-6  hover:bg-gray-400    rounded-md bg-cyan-600  text-sm font-semibold  shadow-sm hover:bg-indigo-500 focus-visible:outline  "
+                  
+                  >
+                      
                   <span>
-                    <HiOutlineArrowsExpand class="h-6 w-6 text-sky-500" />
+                    <HiOutlineArrowsExpand className="h-6 w-6 text-sky-500 mr-2" />
                   </span>
-                  <span className="text-connect"> ampliar</span>
+                  <span className="text-connect"><Link href="/imccv">ampliar</Link></span>
+              
                 </button>
               </div>
               <div className="text-center">
@@ -159,9 +210,9 @@ const Page = () => {
                     className="w-6 h-6"
                   >
                     <path
-                      fill-rule="evenodd"
+                      fillRule="evenodd"
                       d="M9 4.5a.75.75 0 01.721.544l.813 2.846a3.75 3.75 0 002.576 2.576l2.846.813a.75.75 0 010 1.442l-2.846.813a3.75 3.75 0 00-2.576 2.576l-.813 2.846a.75.75 0 01-1.442 0l-.813-2.846a3.75 3.75 0 00-2.576-2.576l-2.846-.813a.75.75 0 010-1.442l2.846-.813A3.75 3.75 0 007.466 7.89l.813-2.846A.75.75 0 019 4.5zM18 1.5a.75.75 0 01.728.568l.258 1.036c.236.94.97 1.674 1.91 1.91l1.036.258a.75.75 0 010 1.456l-1.036.258c-.94.236-1.674.97-1.91 1.91l-.258 1.036a.75.75 0 01-1.456 0l-.258-1.036a2.625 2.625 0 00-1.91-1.91l-1.036-.258a.75.75 0 010-1.456l1.036-.258a2.625 2.625 0 001.91-1.91l.258-1.036A.75.75 0 0118 1.5zM16.5 15a.75.75 0 01.712.513l.394 1.183c.15.447.5.799.948.948l1.183.395a.75.75 0 010 1.422l-1.183.395c-.447.15-.799.5-.948.948l-.395 1.183a.75.75 0 01-1.422 0l-.395-1.183a1.5 1.5 0 00-.948-.948l-1.183-.395a.75.75 0 010-1.422l1.183-.395c.447-.15.799-.5.948-.948l.395-1.183A.75.75 0 0116.5 15z"
-                      clip-rule="evenodd"
+                      clipRule="evenodd"
                     />
                   </svg>
                 </div>
@@ -174,9 +225,9 @@ const Page = () => {
                 </p>
                 <button className="flex items-center justify-center px-3 py-1 text-center text-sm font-semibold  bg-gray-300 w-48 text-white rounded-md mx-auto  mt-12  mb-6  hover:bg-gray-400  mt-10 block  rounded-md bg-cyan-600  text-sm font-semibold  shadow-sm hover:bg-indigo-500 focus-visible:outline  ">
                   <span>
-                    <HiOutlineArrowsExpand class="h-6 w-6 text-sky-500" />
+                    <HiOutlineArrowsExpand className="h-6 w-6 text-sky-500" />
                   </span>
-                  <span className="text-connect"> ampliar</span>
+                  <span className="text-connect"><Link href="/ipm">ampliar</Link></span>
                 </button>
               </div>
               <div className="text-center">
@@ -188,9 +239,9 @@ const Page = () => {
                     className="w-6 h-6"
                   >
                     <path
-                      fill-rule="evenodd"
+                      fillRule="evenodd"
                       d="M9 4.5a.75.75 0 01.721.544l.813 2.846a3.75 3.75 0 002.576 2.576l2.846.813a.75.75 0 010 1.442l-2.846.813a3.75 3.75 0 00-2.576 2.576l-.813 2.846a.75.75 0 01-1.442 0l-.813-2.846a3.75 3.75 0 00-2.576-2.576l-2.846-.813a.75.75 0 010-1.442l2.846-.813A3.75 3.75 0 007.466 7.89l.813-2.846A.75.75 0 019 4.5zM18 1.5a.75.75 0 01.728.568l.258 1.036c.236.94.97 1.674 1.91 1.91l1.036.258a.75.75 0 010 1.456l-1.036.258c-.94.236-1.674.97-1.91 1.91l-.258 1.036a.75.75 0 01-1.456 0l-.258-1.036a2.625 2.625 0 00-1.91-1.91l-1.036-.258a.75.75 0 010-1.456l1.036-.258a2.625 2.625 0 001.91-1.91l.258-1.036A.75.75 0 0118 1.5zM16.5 15a.75.75 0 01.712.513l.394 1.183c.15.447.5.799.948.948l1.183.395a.75.75 0 010 1.422l-1.183.395c-.447.15-.799.5-.948.948l-.395 1.183a.75.75 0 01-1.422 0l-.395-1.183a1.5 1.5 0 00-.948-.948l-1.183-.395a.75.75 0 010-1.422l1.183-.395c.447-.15.799-.5.948-.948l.395-1.183A.75.75 0 0116.5 15z"
-                      clip-rule="evenodd"
+                      clipRule="evenodd"
                     />
                   </svg>
                 </div>
@@ -204,7 +255,7 @@ const Page = () => {
                 </p>
                 <button className="flex items-center justify-center px-3 py-1 text-center text-sm font-semibold  bg-gray-300 w-48 text-white rounded-md mx-auto  mt-12  mb-6  hover:bg-gray-400  mt-10 block  rounded-md bg-cyan-600  text-sm font-semibold  shadow-sm hover:bg-indigo-500 focus-visible:outline  ">
                   <span>
-                    <HiOutlineArrowsExpand class="h-6 w-6 text-sky-500" />
+                    <HiOutlineArrowsExpand className="h-6 w-6 text-sky-500" />
                   </span>
                   <span className="text-connect"> ampliar</span>
                 </button>
@@ -218,9 +269,9 @@ const Page = () => {
                     className="w-6 h-6"
                   >
                     <path
-                      fill-rule="evenodd"
+                      fillRule="evenodd"
                       d="M9 4.5a.75.75 0 01.721.544l.813 2.846a3.75 3.75 0 002.576 2.576l2.846.813a.75.75 0 010 1.442l-2.846.813a3.75 3.75 0 00-2.576 2.576l-.813 2.846a.75.75 0 01-1.442 0l-.813-2.846a3.75 3.75 0 00-2.576-2.576l-2.846-.813a.75.75 0 010-1.442l2.846-.813A3.75 3.75 0 007.466 7.89l.813-2.846A.75.75 0 019 4.5zM18 1.5a.75.75 0 01.728.568l.258 1.036c.236.94.97 1.674 1.91 1.91l1.036.258a.75.75 0 010 1.456l-1.036.258c-.94.236-1.674.97-1.91 1.91l-.258 1.036a.75.75 0 01-1.456 0l-.258-1.036a2.625 2.625 0 00-1.91-1.91l-1.036-.258a.75.75 0 010-1.456l1.036-.258a2.625 2.625 0 001.91-1.91l.258-1.036A.75.75 0 0118 1.5zM16.5 15a.75.75 0 01.712.513l.394 1.183c.15.447.5.799.948.948l1.183.395a.75.75 0 010 1.422l-1.183.395c-.447.15-.799.5-.948.948l-.395 1.183a.75.75 0 01-1.422 0l-.395-1.183a1.5 1.5 0 00-.948-.948l-1.183-.395a.75.75 0 010-1.422l1.183-.395c.447-.15.799-.5.948-.948l.395-1.183A.75.75 0 0116.5 15z"
-                      clip-rule="evenodd"
+                      clipRule="evenodd"
                     />
                   </svg>
                 </div>
@@ -229,11 +280,11 @@ const Page = () => {
                 </h6>
                 <p className="mb-2 font-bold text-md">Coeficiente de Gini</p>
                 <p className="text-gray-700">
-              Permite conocer la desigualdad en terminos de ingresos
+                  Permite conocer la desigualdad en terminos de ingresos
                 </p>
                 <button className="flex items-center justify-center px-3 py-1 text-center text-sm font-semibold  bg-gray-300 w-48 text-white rounded-md mx-auto  mt-12  mb-6  hover:bg-gray-400  mt-10 block  rounded-md bg-cyan-600  text-sm font-semibold  shadow-sm hover:bg-indigo-500 focus-visible:outline  ">
                   <span>
-                    <HiOutlineArrowsExpand class="h-6 w-6 text-sky-500" />
+                    <HiOutlineArrowsExpand className="h-6 w-6 text-sky-500" />
                   </span>
                   <span className="text-connect"> ampliar</span>
                 </button>
@@ -265,7 +316,7 @@ const Page = () => {
                 </p>
                 <button className="flex items-center justify-center px-3 py-1 text-center text-sm font-semibold  bg-gray-300 w-48 text-white rounded-md mx-auto  mt-12  mb-6  hover:bg-gray-400  mt-10 block  rounded-md bg-cyan-600  text-sm font-semibold  shadow-sm hover:bg-indigo-500 focus-visible:outline  ">
                   <span>
-                    <HiOutlineArrowsExpand class="h-6 w-6 text-sky-500" />
+                    <HiOutlineArrowsExpand className="h-6 w-6 text-sky-500" />
                   </span>
                   <span className="text-connect"> ampliar</span>
                 </button>
@@ -297,7 +348,7 @@ const Page = () => {
                 </p>
                 <button className="flex items-center justify-center px-3 py-1 text-center text-sm font-semibold  bg-gray-300 w-48 text-white rounded-md mx-auto  mt-12  mb-6  hover:bg-gray-400  mt-10 block  rounded-md bg-cyan-600  text-sm font-semibold  shadow-sm hover:bg-indigo-500 focus-visible:outline  ">
                   <span>
-                    <HiOutlineArrowsExpand class="h-6 w-6 text-sky-500" />
+                    <HiOutlineArrowsExpand className="h-6 w-6 text-sky-500" />
                   </span>
                   <span className="text-connect"> ampliar</span>
                 </button>
@@ -330,13 +381,11 @@ const Page = () => {
                 </p>
                 <button className="flex items-center justify-center px-3 py-1 text-center text-sm font-semibold  bg-gray-300 w-48 text-white rounded-md mx-auto  mt-12  mb-6  hover:bg-gray-400  mt-10 block  rounded-md bg-cyan-600  text-sm font-semibold  shadow-sm hover:bg-indigo-500 focus-visible:outline  ">
                   <span>
-                    <HiOutlineArrowsExpand class="h-6 w-6 text-sky-500" />
+                    <HiOutlineArrowsExpand className="h-6 w-6 text-sky-500" />
                   </span>
                   <span className="text-connect"> ampliar</span>
                 </button>
               </div>
-
-           
 
               {/* division politica */}
               <div className="text-center ">
@@ -364,22 +413,17 @@ const Page = () => {
                  Barrios/Veredas{" "}
                   <br />
                   <br /> <br /><br />
-
-                 
                 </p>
-                <button className="flex items-center justify-center px-3 py-1 text-center text-sm font-semibold  bg-gray-300 w-48 text-white rounded-md mx-auto  mt-12  mb-6  hover:bg-gray-400  mt-10 block  rounded-md bg-cyan-600  text-sm font-semibold  shadow-sm hover:bg-indigo-500 focus-visible:outline  ">
+                <button className="flex items-center justify-center px-3 py-1 text-center text-sm font-semibold  bg-gray-300 w-48 text-white rounded-md mx-auto  mt-12  mb-6  hover:bg-gray-400  mt-10 block bg-cyan-600  text-sm font-semibold  shadow-sm hover:bg-indigo-500 focus-visible:outline  ">
                   <span>
-                    <HiOutlineArrowsExpand class="h-6 w-6 text-sky-500" />
+                    <HiOutlineArrowsExpand className="h-6 w-6 text-sky-500" />
                   </span>
                   <span className="text-connect"> ampliar</span>
                 </button>
               </div>
-
-         
-
-            </div>
+            </div> 
             <hr />
-          </div>
+          </div>    
         </div>
       </section>
     </>

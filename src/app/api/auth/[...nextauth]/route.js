@@ -52,28 +52,20 @@ export const authOPtions = {
           
             if (account.provider === "google") {
                 console.log(profile.email_verified);
-
                 if(profile.email_verified==true){ 
-                   
                     const res =  await  fetch(`https://j4ch.kratiaanalitik.net/api/auth/validate/email/${profile.email}`);
                     const user = await res.json()
-                    console.log(user);
-                    if(user){return true}
-                
-             }
-              
-            
+                    console.log(user.succes);
+                    if(user.success){return true}
+                }
             }
-
-            
-            return true // Do different verification for other providers that don't have `email_verified`
+            //return true // Do different verification for other providers that don't have `email_verified`
           }
-
-
     },
     pages:{
         signIn:'/login',
-        signOut:'/login'
+        signOut:'/login',
+        
 
     },
  
