@@ -106,8 +106,7 @@ async function getCorte(){
                         <Link href="/proyectos/dashproyectos">   Get access</Link>
                     </button>
                     <p className="mt-6 text-xs leading-5 text-gray-600">
-                      Invoices and receipts available for easy company
-                      reimbursement
+                    {corte} 
                     </p>
                   </div>
                 </div>
@@ -157,8 +156,7 @@ async function getCorte(){
                         <Link href="/dashplan">   Get access</Link>
                     </button>
                     <p className="mt-6 text-xs leading-5 text-gray-600">
-                      Invoices and receipts available for easy company
-                      reimbursement
+                      Fichas metodologicas
                     </p>
                   </div>
                 </div>

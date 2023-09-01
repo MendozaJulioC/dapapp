@@ -16,8 +16,9 @@ export const authOPtions = {
             name: "Credentials",
             async authorize(credentials, req) {
                 const {email, password} =credentials;
-                const res =  await  fetch(`https://j4ch.kratiaanalitik.net/api/auth/validate/email/${email}`);
+                const res =  await  fetch(`https://j4ch.kratiaanalitik.net/api/auth/creo/validate/email/${email}`);
                 const user = await res.json()
+               
                 const isPasswordMatched = await bcrypt.compare(password, user.data[0].password)
                 if (!isPasswordMatched) {
                    throw new Error('Error');
@@ -38,42 +39,37 @@ export const authOPtions = {
     ],
     callbacks:{
          async jwt ({token}){
-            // console.log('jwt callback', {token});
             return token;
-
-        }, async session ({session}){
-          // console.log('session', {session});
-          //console.log(session);
-            return session;
-
-
         },
-        async signIn({ account, profile }) {
-          
+         async session ({session}){
+            return session;
+        },
+        async signIn({ user, account, profile }) {
             if (account.provider === "google") {
-                console.log(profile.email_verified);
-                if(profile.email_verified==true){ 
-                    const res =  await  fetch(`https://j4ch.kratiaanalitik.net/api/auth/validate/email/${profile.email}`);
+            //  console.log(profile.email_verified);
+                if(profile.email_verified){ 
+                    const res =  await  fetch(`https://j4ch.kratiaanalitik.net/api/auth/creo/validate/email/${profile.email}`);
                     const user = await res.json()
-                    console.log(user.succes);
                     if(user.success){return true}
                 }
             }
-            //return true // Do different verification for other providers that don't have `email_verified`
+            if(user.email){
+                const res =  await  fetch(`https://j4ch.kratiaanalitik.net/api/auth/creo/validate/email/${user.email}`);
+                const usuario = await res.json()
+                if(usuario.success){return true}
+            }
           }
     },
     pages:{
         signIn:'/login',
         signOut:'/login',
-        
-
+        // error: '/api/auth/error',
+       error: '/noautorizado',
     },
- 
 }
 
 const handler = NextAuth(authOPtions)
 export { handler as GET, handler as POST}
-
 
 
 

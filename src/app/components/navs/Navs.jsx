@@ -94,7 +94,11 @@ export default function Nav(props) {
                 <Dropdown.Item>Settings</Dropdown.Item>
                 <Dropdown.Item>Earnings</Dropdown.Item>
                 <Dropdown.Divider />
-                <Dropdown.Item className="text-red-400/100 font-bold">
+                <Dropdown.Item 
+                  className="text-red-400/100 font-bold"
+                  onClick={signOut}
+                
+                >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="16"
@@ -117,28 +121,7 @@ export default function Nav(props) {
               </Dropdown>
             </div>
 
-            <div className=" flex items-center justify-between p-6 lg:px-20">
-              {props.usuario ? (
-                <>
-                  {/* <a href="/login" className="text-sm font-semibold leading-6 text-gray-900">
-                   <span className='bg-rose-500' aria-hidden="true">       Salir                   </span>
-                </a> */}
-                  <button
-                    className="flex w-full justify-center rounded-md bg-slate-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-red-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 font-mono hover:font-mono"
-                    onClick={signOut}
-                  >
-                    Salir
-                  </button>
-                </>
-              ) : (
-                <a
-                  href="/login"
-                  className="text-sm font-semibold leading-6 text-gray-900"
-                >
-                  Log in <span aria-hidden="true"></span>
-                </a>
-              )}
-            </div>
+
           </div>
         </nav>
       </header>

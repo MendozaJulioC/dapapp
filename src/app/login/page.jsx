@@ -13,6 +13,7 @@ export default function Example() {
   const { status } = useSession({ required: false })
 
 
+
 if (status === "loading") {
   return "Loading or not authenticated..."
 }
@@ -22,6 +23,10 @@ if (status === "authenticated") {
 
 }
 
+
+
+
+
   const handleSubmit= async(e)=>{
     e.preventDefault();
     try {
@@ -30,6 +35,7 @@ if (status === "authenticated") {
         email,
         password,
       });
+
       if (!data.error) {
         router.push("/dashboard");
       }
@@ -43,7 +49,7 @@ if (status === "authenticated") {
       <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8b  border border-sky-500 ">
         <div className="sm:mx-auto sm:w-full sm:max-w-sm mt-12  ">
           <img
-            className="mx-auto w-[50%] w-auto"
+            className="mx-auto  w-auto"
             src="https://cdnwordpresstest-f0ekdgevcngegudb.z01.azurefd.net/es/wp-content/themes/theme_alcaldia/logos/logo_footer.png"
             alt="Your Company"
           />
