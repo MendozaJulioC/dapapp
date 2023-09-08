@@ -79,7 +79,7 @@ async function getCorte(){
                     <button
                        className="mt-10 block w-full rounded-md bg-cyan-600 px-3 py-2 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                     >
-                        <Link href="/dashplan">   Get access</Link>
+                        <Link href="/dashplan">Get access</Link>
                     </button>
                     <p className="mt-6 text-xs leading-5 text-gray-600">
                    {corte} 
@@ -103,7 +103,7 @@ async function getCorte(){
                     <button
                        className="mt-10 block w-full rounded-md bg-blue-400 px-3 py-2 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                     >
-                        <Link href="/proyectos/dashproyectos">   Get access</Link>
+                        <Link href="/proyectos/dashproyectos">Get access</Link>
                     </button>
                     <p className="mt-6 text-xs leading-5 text-gray-600">
                     {corte} 
@@ -129,7 +129,7 @@ async function getCorte(){
                     <button
                        className="mt-10 block w-full rounded-md bg-emerald-400 px-3 py-2 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                     >
-                        <Link href="/dashplan">   Get access</Link>
+                        <Link href="/dashplan">Get access</Link>
                     </button>
                     <p className="mt-6 text-xs leading-5 text-gray-600">
                     {corte} 
@@ -153,7 +153,7 @@ async function getCorte(){
                     <button
                        className="mt-10 block w-full rounded-md bg-amber-400 px-3 py-2 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                     >
-                        <Link href="/dashplan">   Get access</Link>
+                        <Link href="/fichaindicador">Get access</Link>
                     </button>
                     <p className="mt-6 text-xs leading-5 text-gray-600">
                       Fichas metodologicas
@@ -183,9 +183,9 @@ async function getCorte(){
                 <h6 className="text-4xl font-bold text-deep-purple-accent-400">
                   46.68
                 </h6>
-                <p className="mb-2 font-bold text-md">IMCCV</p>
+                <p className="mb-2 font-bold text-md">IMCV</p>
                 <p className="text-gray-700">
-                  Indice Multidimensional de Condiciones de Calidada de Vida
+                  Indice Multidimensional de Condiciones de Vida
                 </p>
                   <button
                    className="flex items-center justify-center px-3 py-1 text-center text-sm font-semibold  bg-gray-300 w-48 text-white mx-auto  mt-12  mb-6  hover:bg-gray-400    rounded-md bg-cyan-600  text-sm font-semibold  shadow-sm hover:bg-indigo-500 focus-visible:outline  "
@@ -370,11 +370,11 @@ async function getCorte(){
                   </svg>
                 </div>
                 <h6 className="text-4xl font-bold text-deep-purple-accent-400">
-                37.640
+               0.71
                 </h6>
-                <p className="mb-2 font-bold text-md">Extension Territorial</p>
+                <p className="mb-2 font-bold text-md">IDH</p>
                 <p className="text-gray-700">
-                 Hectareas <br /> <br /> <br /><br />
+                 Indice de Desarrollo HUmano <br /> <br /> <br /><br />
                   <br />
                 </p>
                 <button className="flex items-center justify-center px-3 py-1 text-center text-sm font-semibold  bg-gray-300 w-48 text-white rounded-md mx-auto  mt-12  mb-6  hover:bg-gray-400  mt-10 block  rounded-md bg-cyan-600  text-sm font-semibold  shadow-sm hover:bg-indigo-500 focus-visible:outline  ">

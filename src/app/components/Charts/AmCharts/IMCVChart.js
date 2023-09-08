@@ -155,7 +155,7 @@ function Chart(props) {
   }, []);
 
   return (
-    <div id="chartdiv" style={{ width: "100%", height: "600px" }}> </div>
+    <div id="chartdiv" style={{ width: "100%", height: "450px" }}> </div>
   );
 }
 export default Chart;

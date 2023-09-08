@@ -5,7 +5,7 @@ const Tarjeta = (props) => {
   
       <div className="mt-4 bg">
       <a
-       style={{ height: '18rem' }}
+       style={{ height: '14rem' }}
         href="#"
         class="flex flex-col items-center bg-slate-800 ring-4 border-gray-800/25 shadow-2xl shadow-indigo-500/50    rounded-lg  md:flex-row md:max-w-md "
       >

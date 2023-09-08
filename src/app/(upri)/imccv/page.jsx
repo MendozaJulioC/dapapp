@@ -22,8 +22,9 @@ const PageImccv = () => {
               </div>
               <div className="col-span-3">
                 <ChartIMCV />
+          
               </div>
-              
+           
             </div>
           </div>
         </div>
