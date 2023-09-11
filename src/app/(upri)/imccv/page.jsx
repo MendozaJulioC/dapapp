@@ -1,5 +1,5 @@
-import CardECV from "../../components/Cards/Card";
-import ChartIMCV from "../../components/Charts/AmCharts/IMCVChart";
+import CardECV from "../../../components/Cards/Card";
+import ChartIMCV from "../../../components/Charts/AmCharts/IMCVChart";
 
 const PageImccv = () => {
   return (

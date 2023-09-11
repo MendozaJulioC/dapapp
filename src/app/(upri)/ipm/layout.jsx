@@ -1,4 +1,4 @@
-import Nav from "../../components/navs/Navs"
+import Nav from "../../../components/navs/Navs"
 import Link from "next/link";
 import { getServerSession  } from 'next-auth/next'
 import { redirect } from 'next/navigation'

@@ -3,7 +3,7 @@ import Select from 'react-select'
 import Image from 'next/image'
 import  React,{ useState, useRef , useMemo} from "react";
 import { Label, Textarea } from 'flowbite-react';
-import Chartprueba from '../components/Charts/AmCharts/IMCVChart'
+import Chartprueba from '../../components/Charts/AmCharts/IMCVChart'
 const FichaIndicador = ({}) => {
   const [selectedOption, setSelectedOption] = useState(null);
   const [elementos, setElementos]=useState(null)

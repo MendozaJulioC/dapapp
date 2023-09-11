@@ -1,4 +1,4 @@
-import Provider from './components/Providers/Provider'
+import Provider from '../components/Providers/Provider'
 //import Header from './components/Header'
 //import Footer from './components/Footer'
 import { Inter } from 'next/font/google'

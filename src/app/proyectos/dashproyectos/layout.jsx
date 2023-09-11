@@ -1,4 +1,4 @@
-import Nav from "../../components/NavProyectos/Nav"
+import Nav from "../../../components/NavProyectos/Nav"
 import Link from "next/link";
 
 export const metadata ={
@@ -231,6 +231,8 @@ const DateoLayout = ({children}) => {
           </ul>
         </div>
       </aside>
+
+      
       {children}
     </div>
   );

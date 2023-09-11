@@ -4,7 +4,7 @@ import { authOptions } from '../api/auth/[...nextauth]/route'
 
 
 import Page from './page'
-import Nav from '../components/navs/Navs'
+import Nav from '../../components/navs/Navs'
 
 const ServerProtectedPage = async () => {
 

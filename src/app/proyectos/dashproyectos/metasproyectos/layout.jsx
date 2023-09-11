@@ -1,4 +1,4 @@
-import Nav from '../../../components/NavProyectos/Nav'
+import Nav from '../../../../components/navs/Navs'
 export default function DashboardLayout({
   children, // will be a page or nested layout
 }) {

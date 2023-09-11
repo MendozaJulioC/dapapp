@@ -1,4 +1,4 @@
-import Nav from "../components/NavProyectos/Nav"
+import Nav from "@/components/NavProyectos/Nav"
 
 export const metadata ={
     title:"KratiAnalitik"
