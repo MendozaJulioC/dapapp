@@ -46,11 +46,9 @@ const FichaIndicador = ({}) => {
           <div className="p-2 border-2 border-blue-200 border-dashed rounded-lg dark:border-gray-700 mt-4">
             <div className=" bg-white px-6 py-18 sm:py-10 lg:px-8 container mx-auto">
               <button type="button" className='shadow-sm p-1 px-10 rounded-md hover:bg-red-600'>  
-              
-              <img src="/pdf.svg" alt="" srcset="" width={34}  height={34}/>
+                <img src="/pdf.svg" alt="" srcset="" width={34}  height={34}/>
                </button>
-         
-              <div className="mx-auto max-w-2xl text-center">
+               <div className="mx-auto max-w-2xl text-center">
                 <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
                   Ficha Indicadores Medellín
                 </h2>
@@ -88,11 +86,11 @@ const FichaIndicador = ({}) => {
                   src="/Escudo.svg"
                   alt="Your Company"
                 /> */}
-                   <img
-          className="mx-auto  w-36"
-                src="https://cdnwordpresstest-f0ekdgevcngegudb.z01.azurefd.net/es/wp-content/themes/theme_alcaldia/logos/logo_footer.png"
-                alt=""
-              />
+                <img
+                  className="mx-auto  w-48"
+                  src="https://cdnwordpresstest-f0ekdgevcngegudb.z01.azurefd.net/es/wp-content/themes/theme_alcaldia/logos/logo_footer.png"
+                  alt=""
+                />
               </div>
               <div className="grid grid-cols-12 gap-4 mt-4 mb-4">
                 <div className="col-span-full">
