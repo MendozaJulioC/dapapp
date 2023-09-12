@@ -1,12 +1,13 @@
-import Nav from "../../components/navs/Navs"
+import Nav from "../../../components/navs/Navs"
 import Link from "next/link";
 import { getServerSession  } from 'next-auth/next'
 import { redirect } from 'next/navigation'
-import { authOptions } from '../api/auth/[...nextauth]/route'
+import { authOptions } from '../../api/auth/[...nextauth]/route'
+
 
 
 export const metadata ={
-    title:"KratiAnalitik"
+    title:"Dapp"
   }
 
   
@@ -51,7 +52,7 @@ const DateoLayout = async ({children}) => {
                     xmlns="http://www.w3.org/2000/svg"
                     width="24"
                     height="24"
-                    fillRule="#164e63"
+                    fill="#1B6B93"
                     className="bi bi-house-dash-fill mr-2"
                     viewBox="0 0 16 16"
                   >
@@ -70,16 +71,14 @@ const DateoLayout = async ({children}) => {
                   className="flex items-center p-2
                     text-gray-900 rounded-lg
                     dark:text-white
-                    
                     hover:bg-cyan-100 
                     dark:hover:bg-red-700 group"
-                    
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="24"
                     height="24"
-                    fillRule="#0369a1"
+                    fill="#1B6B93"
                     className="bi bi-book-fill mr-2"
                     viewBox="0 0 16 16"
                   >
@@ -103,7 +102,7 @@ const DateoLayout = async ({children}) => {
                     xmlns="http://www.w3.org/2000/svg"
                     width="24"
                     height="24"
-                    fillRule="#164e63"
+                    fill="#1B6B93"
                     className="bi bi-clipboard2-pulse-fill mr-2"
                     viewBox="0 0 16 16"
                   >
@@ -129,7 +128,7 @@ const DateoLayout = async ({children}) => {
                     xmlns="http://www.w3.org/2000/svg"
                     width="24"
                     height="24"
-                    fillRule="#164e63"
+                    fill="#1B6B93"
                     className="bi bi-clipboard-data-fill mr-2"
                     viewBox="0 0 16 16"
                   >
@@ -155,7 +154,7 @@ const DateoLayout = async ({children}) => {
                     xmlns="http://www.w3.org/2000/svg"
                     width="24"
                     height="24"
-                    fillRule="#164e63"
+                    fill="#1B6B93"
                     className="bi bi-collection-fill mr-2"
                     viewBox="0 0 16 16"
                   >
@@ -180,13 +179,13 @@ const DateoLayout = async ({children}) => {
                     xmlns="http://www.w3.org/2000/svg"
                     width="24"
                     height="24"
-                    fillRule="#164e63"
+                    fill="#1B6B93"
                     className="bi bi-easel2-fill mr-2"
                     viewBox="0 0 16 16"
                   >
                     <path d="M8.447.276a.5.5 0 0 0-.894 0L7.19 1H2.5A1.5 1.5 0 0 0 1 2.5V10h14V2.5A1.5 1.5 0 0 0 13.5 1H8.809L8.447.276Z" />
                     <path
-                      fillRule="evenodd"
+                      fill="evenodd"
                       d="M.5 11a.5.5 0 0 0 0 1h2.86l-.845 3.379a.5.5 0 0 0 .97.242L3.89 14h8.22l.405 1.621a.5.5 0 0 0 .97-.242L12.64 12h2.86a.5.5 0 0 0 0-1H.5Zm3.64 2 .25-1h7.22l.25 1H4.14Z"
                     />
                   </svg>
@@ -209,7 +208,7 @@ const DateoLayout = async ({children}) => {
                     xmlns="http://www.w3.org/2000/svg"
                     width="24"
                     height="24"
-                    fillRule="#164e63"
+                    fill="#1B6B93"
                     className="bi bi-file-ruled-fill mr-2"
                     viewBox="0 0 16 16"
                   >
@@ -233,12 +232,12 @@ const DateoLayout = async ({children}) => {
                     xmlns="http://www.w3.org/2000/svg"
                     width="24"
                     height="24"
-                    fillRule="#164e63"
+                    fill="#1B6B93"
                     className="bi bi-cash-coin mr-2"
                     viewBox="0 0 16 16"
                   >
                     <path
-                      fillRule="evenodd"
+                      fill="evenodd"
                       d="M11 15a4 4 0 1 0 0-8 4 4 0 0 0 0 8zm5-4a5 5 0 1 1-10 0 5 5 0 0 1 10 0z"
                     />
                     <path d="M9.438 11.944c.047.596.518 1.06 1.363 1.116v.44h.375v-.443c.875-.061 1.386-.529 1.386-1.207 0-.618-.39-.936-1.09-1.1l-.296-.07v-1.2c.376.043.614.248.671.532h.658c-.047-.575-.54-1.024-1.329-1.073V8.5h-.375v.45c-.747.073-1.255.522-1.255 1.158 0 .562.378.92 1.007 1.066l.248.061v1.272c-.384-.058-.639-.27-.696-.563h-.668zm1.36-1.354c-.369-.085-.569-.26-.569-.522 0-.294.216-.514.572-.578v1.1h-.003zm.432.746c.449.104.655.272.655.569 0 .339-.257.571-.709.614v-1.195l.054.012z" />
@@ -263,8 +262,7 @@ const DateoLayout = async ({children}) => {
                     xmlns="http://www.w3.org/2000/svg"
                     width="24"
                     height="24"
-               
-                    fillRule="#164e63"
+                    fill="#1B6B93"
                     className="bi bi-cash-coin mr-2"
                     viewBox="0 0 16 16"
                   >
@@ -290,7 +288,7 @@ const DateoLayout = async ({children}) => {
                     xmlns="http://www.w3.org/2000/svg"
                     width="24"
                     height="24"
-                    fillRule="#164e63"
+                    fill="#1B6B93"
                     className="bi bi-people mr-2"
                     viewBox="0 0 16 16"
                   >
@@ -314,7 +312,7 @@ const DateoLayout = async ({children}) => {
                     xmlns="http://www.w3.org/2000/svg"
                     width="24"
                     height="24"
-                    fillRule="#164e63"
+                    fill="#1B6B93"
                     className="bi bi-person-rolodex mr-2"
                     viewBox="0 0 16 16"
                   >
@@ -339,16 +337,40 @@ const DateoLayout = async ({children}) => {
                     xmlns="http://www.w3.org/2000/svg"
                     width="24"
                     height="24"
-                    fillRule="#213555"
+                    fill="#146C94"
+                    className="bi bi-buildings-fill mr-2"
+                    viewBox="0 0 16 16"
+                  >
+                    <path d="M15 .5a.5.5 0 0 0-.724-.447l-8 4A.5.5 0 0 0 6 4.5v3.14L.342 9.526A.5.5 0 0 0 0 10v5.5a.5.5 0 0 0 .5.5h9a.5.5 0 0 0 .5-.5V14h1v1.5a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5V.5ZM2 11h1v1H2v-1Zm2 0h1v1H4v-1Zm-1 2v1H2v-1h1Zm1 0h1v1H4v-1Zm9-10v1h-1V3h1ZM8 5h1v1H8V5Zm1 2v1H8V7h1ZM8 9h1v1H8V9Zm2 0h1v1h-1V9Zm-1 2v1H8v-1h1Zm1 0h1v1h-1v-1Zm3-2v1h-1V9h1Zm-1 2h1v1h-1v-1Zm-2-4h1v1h-1V7Zm3 0v1h-1V7h1Zm-2-2v1h-1V5h1Zm1 0h1v1h-1V5Z" />
+                  </svg>
+                  Dependencias
+                </Link>
+              </span>
+            </li>
+            <li>
+              <span>
+                <Link
+                  href={"/proyectos/dashproyectos"}
+                  className="flex items-center p-2
+                    text-gray-900 rounded-lg
+                    dark:text-white
+                    hover:bg-gray-100 
+                    dark:hover:bg-gray-700 group"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    fill="#D21312"
                     className="bi bi-box-arrow-left mr-2"
                     viewBox="0 0 16 16"
                   >
                     <path
-                     fillRule="evenodd"
+                      fill="evenodd"
                       d="M6 12.5a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5h-8a.5.5 0 0 0-.5.5v2a.5.5 0 0 1-1 0v-2A1.5 1.5 0 0 1 6.5 2h8A1.5 1.5 0 0 1 16 3.5v9a1.5 1.5 0 0 1-1.5 1.5h-8A1.5 1.5 0 0 1 5 12.5v-2a.5.5 0 0 1 1 0v2z"
                     />
                     <path
-                    fillRule="evenodd"
+                      fill="evenodd"
                       d="M.146 8.354a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L1.707 7.5H10.5a.5.5 0 0 1 0 1H1.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3z"
                     />
                   </svg>
@@ -361,7 +383,6 @@ const DateoLayout = async ({children}) => {
       </aside>
       {children}
     </div>
-    
   );
 }
 

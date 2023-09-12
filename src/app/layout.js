@@ -18,7 +18,7 @@ export default function RootLayout({ children }) {
       lang='en'
       className={`${inter.className} h-full scroll-smooth antialiased`}
     >
-      <body className='flex h-full flex-col'>
+      <body className='flex h-full flex-col' suppressHydrationWarning={true}>
         <Provider>
           {/* <Header /> */}
           <Script src='https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.7.0/flowbite.min.js'/>

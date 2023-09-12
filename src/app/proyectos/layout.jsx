@@ -1,4 +1,5 @@
 import Nav from "@/components/NavProyectos/Nav"
+import Aside from "@/components/NavProyectos/AsideMain"
 
 export const metadata ={
     title:"KratiAnalitik"
@@ -7,8 +8,9 @@ export const metadata ={
 const DateoLayout = ({children}) => {
   return (
     <div className=" mt-2">
-     <Nav />
-       {children}
+      <Nav />
+      <Aside/>
+      {children}
     </div>
   )
 }
