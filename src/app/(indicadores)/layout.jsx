@@ -7,7 +7,7 @@ import { authOptions } from '../api/auth/[...nextauth]/route'
 
 
 export const metadata ={
-    title:"Dapp"
+    title:"Medellín en Datos"
   }
 
   

@@ -11,6 +11,8 @@ useEffect(()=>{ getAvancePlan()})
 const [avanceplan, setAvancePlan]= useState(null)
 const [finanzas, setFinanzas]= useState(null)
 const [corte, setCorte]= useState(null)
+const [totalindicadores, setTotalIndicadores] = useState(null)
+
 
 
 async function getAvancePlan(){
@@ -49,11 +51,22 @@ async function getCorte(){
     let dia = corteavance.getDate()
     corteavance.setDate(dia+1)
     setCorte( corteavance.toLocaleDateString("en-US", { day:'numeric',month : 'short',year: 'numeric' }));
+    getTotalIndicadores()
   } catch (error) {
     console.error('Error getCorte: ', error);
   }
 }
 
+async function getTotalIndicadores(){
+  try {
+    const res = await fetch(`http://localhost:5000/api/datos/totfichas`)
+    const totfichas = await res.json();
+    setTotalIndicadores(totfichas.data[0].count)
+   
+  } catch (error) {
+    console.error('Error getCorte: ', error);
+  }
+}
 
   return (
     <>
@@ -146,7 +159,7 @@ async function getCorte(){
                     </p>
                     <p className="mt-6 flex items-baseline justify-center gap-x-2">
                       <span className="text-5xl font-bold tracking-tight text-gray-900">
-                        1259
+                    {totalindicadores}
                       </span>
                       <span className="text-sm font-semibold leading-6 tracking-wide text-gray-600"></span>
                     </p>

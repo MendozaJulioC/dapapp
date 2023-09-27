@@ -6,7 +6,7 @@ import { authOptions } from '../../api/auth/[...nextauth]/route'
 
 
 export const metadata ={
-    title:"KratiAnalitik"
+    title:"Medellín en Datos"
   }
 
   
