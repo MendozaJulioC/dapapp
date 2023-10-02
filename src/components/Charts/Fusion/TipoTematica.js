@@ -31,10 +31,6 @@ function ChartTipoTematica(props) {
            'http://localhost:5000/api/datos/counttematicadane'
           );
           const respuesta = await res.json();
-          console.log(respuesta);
-
-    
-
           dataprint.splice(0, dataprint.length);
           respuesta.data.forEach((element) => {
        
@@ -55,7 +51,7 @@ function ChartTipoTematica(props) {
 
   const dataSource = {
     chart: {
-      caption: "Total por tematica DANE",
+      caption: "Número de Indicadores por tematica DANE",
       subcaption : "subpiee",
       xaxisname: "Tematicas",
       yaxisname: "total",

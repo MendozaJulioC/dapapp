@@ -16,7 +16,7 @@ import  React,{useEffect, useState, useRef , useMemo} from "react";
 let dataprint =[]
 
 
-function ChartTipoIndicador(props) {
+function ChartTipoTematica() {
     const [dateo, setDateo]= useState()
     
     useEffect(()=>{
@@ -28,17 +28,19 @@ function ChartTipoIndicador(props) {
         try {
             
           const res = await fetch(
-           'http://localhost:5000/api/datos/tipoind'
+           'http://localhost:5000/api/datos/countsgtoindicador'
           );
           const respuesta = await res.json();
-        dataprint.splice(0, dataprint.length);
-        respuesta.data.forEach((element) => {
-          dataprint.push({
-            label: element.find_tipo_ind,
-            value: element.count,
-            color: props.color,
+          dataprint.splice(0, dataprint.length);
+          respuesta.data.forEach((element) => {
+       
+            dataprint.push({
+              label: element.find_periocidad_sgto_ind,
+              value: element.count
+          
+            });
+        
           });
-        });
 
 
         } catch (error) {
@@ -49,15 +51,16 @@ function ChartTipoIndicador(props) {
 
   const dataSource = {
     chart: {
-      caption: "Total por Tipo de Indicadores",
+      caption: "Número de Indicadores por tematica DANE",
       subcaption : "subpiee",
-      xaxisname: "Indicadores",
+      xaxisname: "Tematicas",
       yaxisname: "total",
       showvalues: "1",
-    
-      slant: "1",
       formatnumberscale: "0",
       theme: "fusion",
+      labeldisplay: "Rotate",
+      slantlabels: "1"
+
 
 
    
@@ -68,7 +71,7 @@ function ChartTipoIndicador(props) {
   
         return (
           <ReactFusioncharts
-            type="column2d"
+          type="column2d"
             width={'100%'}
             height={450}
             dataFormat="JSON"
@@ -77,4 +80,4 @@ function ChartTipoIndicador(props) {
         );
 
 }
-export default ChartTipoIndicador; 
+export default ChartTipoTematica; 

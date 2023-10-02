@@ -7,10 +7,10 @@ const Tarjeta = (props) => {
       <a
        style={{ height: '14rem' }}
         href="#"
-        class="flex flex-col items-center bg-slate-800 ring-4 border-gray-800/25 shadow-2xl shadow-indigo-500/50    rounded-lg  md:flex-row md:max-w-md "
+        class="flex flex-col items-center bg-slate-700 ring-4 border-gray-800/25 shadow-2xl shadow-indigo-500/50 rounded-lg  md:flex-row md:max-w-md "
       >
         <img
-          class="object-cover w-full h-screen   rounded-t-lg md:h-full md:w-48 md:rounded-none md:rounded-l-lg"
+          class="object-cover w-full h-screen rounded-t-lg md:h-full md:w-48 md:rounded-none md:rounded-l-lg"
            src="/stock.svg"
           alt=""
         />

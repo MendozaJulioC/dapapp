@@ -2,10 +2,11 @@
 import { useEffect, useState } from "react";
 import Link from "next/link"
 import { HiOutlineArrowsExpand } from 'react-icons/hi'
-
+import dynamic from 'next/dynamic'
 const ChartTipoIndicador = dynamic(() => import('../../../components/Charts/Fusion/TipoInd'), { ssr: false })
 const ChartTipoTematica = dynamic(() => import('../../../components/Charts/Fusion/TipoTematica'), { ssr: false })
-import dynamic from 'next/dynamic'
+const ChartTipoSgto = dynamic(() => import('../../../components/Charts/AmCharts/TipoSgto'), { ssr: false });
+
 
 
 
@@ -18,21 +19,40 @@ const DashIndicadores = () => {
   const [temaeconomia, setTemaEconomia]= useState()
   const [temasocial, setTemaSocial]= useState()
   const [tematerritorio, setTemaTerritorio]= useState()
+  const [upri, setUpri] = useState()
+  const [opp, setOpp] = useState()
+  const [pdm, setPdm] = useState()
+  const [upot, setUpot] = useState()
 
 
   async function getTotalTemasDane(){
     try {
       const res = await fetch(`http://localhost:5000/api/datos/tottemasdane`)
       const tottemas= await res.json();
-
       setTemaEconomia(tottemas.data[0].count)
       setTemaSocial(tottemas.data[1].count)
       setTemaTerritorio(tottemas.data[2].count)
+      getTotalIndUnidadesDap()
+
     } catch (error) {
       console.error('Error getCorte: ', error);
     }
-  
   }
+
+  async function getTotalIndUnidadesDap(){
+    try {
+      const res = await fetch(`http://localhost:5000/api/datos/totindunidaesdap`)
+      const totindunidadesdap = await res.json()
+      console.log(totindunidadesdap);  
+      setPdm(totindunidadesdap.data[2].count)
+      setUpri(totindunidadesdap.data[1].count)
+      setOpp(totindunidadesdap.data[0].count)
+      setUpot(totindunidadesdap.data[3].count)
+    } catch (error) {
+      console.error('Error getTotalIndUnidadesDap: ', error);
+    }
+  }
+
   return (
     <div className="p-2 sm:ml-60">
       <div className=" bg-white px-6 py-10 sm:py-28 lg:px-6 container mx-auto">
@@ -114,7 +134,6 @@ const DashIndicadores = () => {
                       Fichas Metodologicas
                     </p>
                     <img src="/ficha.svg" alt="" />
-
                     <button className="mt-12 block w-full rounded-md bg-cyan-600 px-3 py-2 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
                       <Link href="/fichaindicador">Get access</Link>
                     </button>
@@ -124,27 +143,25 @@ const DashIndicadores = () => {
             </div>
 
             <section className=" bg-gray-100/50">
-              <div className="mx-auto max-w-7xl py-8 sm:px-4 sm:py-10 lg:px-2">
-              <ChartTipoTematica   color={'#186F65'}/>
+              <div className="mx-auto max-w-7xl py-8 sm:px-4 sm:py-10 lg:px-2 ">
+                <ChartTipoTematica   color={'#186F65'}/>
                 <hr />
               </div>
 
-              <div className="col-span-full">
-           
-              </div>
 
-              <div className="grid gap-2 sm:grid-cols-1 lg:grid-cols-12 mt-3 rounded-md border-2 border-sky-700 mb-4">
-                <div className="col-span-6 p-4 text-center">
-                <div className="text-center p-4">
-               
-               <ChartTipoIndicador
-             color={'#12486B'}
-           />
-             </div>
+              <div className="grid gap-2 sm:grid-cols-1 lg:grid-cols-12 mt-3 rounded-md border-2 mb-4">
+                <div className="col-span-5 p-4 text-center">
+                  <div className="text-center p-4 shadow-md">
+                    <ChartTipoIndicador color={'#6499E9'}/>
+                  </div>
                 </div>
-                <div className="col-span-6 p-4 text-center">
-                  Indicadores por dependencias{" "}
+                <div className="col-span-7 p-4 text-center shadow-sm">
+                <div className="text-center p-4 shadow-md">
+                <ChartTipoSgto/>
+                  </div>
+       
                 </div>
+             
               </div>
 
               <div className="grid gap-2 sm:grid-cols-1 lg:grid-cols-4 mt-4">
@@ -157,7 +174,7 @@ const DashIndicadores = () => {
                       <img src="/economia.svg" alt="" srcSet="" />
                       <p className="mt-6 flex items-baseline justify-center gap-x-2">
                         <span className="text-4xl font-bold tracking-tight text-gray-900">
-                          100
+                          {upri}
                         </span>
                       </p>
                       <p className="mt-6 text-xs leading-5 text-gray-600">
@@ -176,7 +193,7 @@ const DashIndicadores = () => {
                       <img src="/sociedad.svg" alt="" srcSet="" />
                       <p className="mt-6 flex items-baseline justify-center gap-x-2">
                         <span className="text-4xl font-bold tracking-tight text-gray-900">
-                          100
+                         {opp}
                         </span>
                       </p>
                       <p className="mt-6 text-xs leading-5 text-gray-600">
@@ -195,7 +212,7 @@ const DashIndicadores = () => {
                       <img src="/territorio.svg" alt="" srcSet="" />
                       <p className="mt-6 flex items-baseline justify-center gap-x-2">
                         <span className="text-4xl font-bold tracking-tight text-gray-900">
-                          100
+                      {upot}
                         </span>
                       </p>
                       <p className="mt-6 text-xs leading-5 text-gray-600">
@@ -214,7 +231,7 @@ const DashIndicadores = () => {
 
                       <p className="mt-6 flex items-baseline justify-center gap-x-2">
                         <span className="text-4xl font-bold tracking-tight text-gray-900">
-                          810
+                         {pdm}
                         </span>
                       </p>
                       <p className="mt-6 text-xs leading-5 text-gray-600">

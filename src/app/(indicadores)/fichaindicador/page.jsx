@@ -3,7 +3,7 @@ import Select from 'react-select'
 import Image from 'next/image'
 import  React,{ useState, useRef , useMemo} from "react";
 import { Label, Textarea } from 'flowbite-react';
-import Chartprueba from '../../../components/Charts/AmCharts/IMCVChart'
+
 const FichaIndicador = ({}) => {
   const [selectedOption, setSelectedOption] = useState(null);
   const [elementos, setElementos]=useState(null)
@@ -103,7 +103,7 @@ const FichaIndicador = ({}) => {
 
                 <div className="col-span-full">
                   <div className="text-center p-4">
-                  <Chartprueba />
+                  {/* <Chartprueba /> */}
                   </div>
                 </div>
 
@@ -112,7 +112,7 @@ const FichaIndicador = ({}) => {
                     htmlFor="last-name"
                     className="block text-lg font-semibold leading-6 text-gray-400 mt-2"
                   >
-                    Definicion:
+                    Definición:
                   </label>
                 </div>
                 <div className="col-span-full border border-r-gray-300 rounded-md p-6">
@@ -137,7 +137,7 @@ const FichaIndicador = ({}) => {
                     htmlFor="last-name"
                     className="block text-lg font-semibold leading-6 text-gray-400 mt-2"
                   >
-                    Marco normatico :
+                    Marco normativo :
                   </label>
                 </div>
                 <div className="col-span-full border border-r-gray-300 rounded-md p-6">
@@ -198,7 +198,7 @@ const FichaIndicador = ({}) => {
                     <div className="rounded-2xl bg-gray-50 shadow-sm shadow-indigo-500/50 py-10 text-center ring-1 ring-inset ring-gray-900/5 lg:flex lg:flex-col lg:justify-center lg:py-16">
                       <div className="mx-auto max-w-xs px-8">
                         <div className="text-base font-semibold text-gray-600">
-                          Periocidad Seguimiento
+                          Periodicidad Seguimiento
                           <hr />
                         </div>
                         <div className="mt-6 flex items-baseline justify-center gap-x-2">
@@ -217,7 +217,7 @@ const FichaIndicador = ({}) => {
                       htmlFor="last-name"
                       className="block text-lg font-semibold leading-6 text-gray-400 mt-2"
                     >
-                    Formula de calculo
+                    Fórmula de cálculo
                     </label>
                   </div>
                   <div className="col-span-12  border border-r-gray-300 rounded-md p-6">
@@ -234,21 +234,17 @@ const FichaIndicador = ({}) => {
                   <div className="col-span-12  border border-r-gray-300 rounded-md p-6">
                   {elementos?.find_variables_operativas}
                   </div>
-
-
-
                   <div className="col-span-12 mt-4">
                     <label
                       htmlFor="last-name"
                       className="block text-lg font-semibold leading-6 text-gray-400 mt-2"
                     >
-                      Fuente de indicador
+                      Fuente de Indicador
                     </label>
                   </div>
                   <div className="col-span-12  border border-r-gray-300 rounded-md p-6">
                   {elementos?.find_fuente_ind}
                   </div>
-
                   <div className="col-span-12 mt-4">
                     <label
                       htmlFor="last-name"
@@ -260,7 +256,6 @@ const FichaIndicador = ({}) => {
                   <div className="col-span-12  border border-r-gray-300 rounded-md p-6">
                   {elementos?.nom_dependencia}
                   </div>
-
                   <div className="col-span-12 mt-4">
                     <label
                       htmlFor="last-name"
@@ -277,13 +272,24 @@ const FichaIndicador = ({}) => {
                       htmlFor="last-name"
                       className="block text-lg font-semibold leading-6 text-gray-400 mt-2"
                     >
+                      Responsable Misional
+                    </label>
+                  </div>
+                  <div className="col-span-12  border border-r-gray-300 rounded-md p-6">
+                  {"Próximante...."}
+                  </div>
+                  
+                  <div className="col-span-12 mt-4">
+                    <label
+                      htmlFor="last-name"
+                      className="block text-lg font-semibold leading-6 text-gray-400 mt-2"
+                    >
                       Observaciones Generales
                     </label>
                   </div>
                   <div className="col-span-12  border border-r-gray-300 rounded-md p-6">
                   {elementos?.find_observaciones_generales}
                   </div>
-  
                   <div className="lg:col-span-6  md:col-span-12 sm: col-span-12 border border-r-gray-300 rounded-md p-6 mt-10 mb-4">
                     <label
                       htmlFor="last-name"
@@ -348,9 +354,9 @@ const FichaIndicador = ({}) => {
             </div>
 
                      <footer className='text-xs p-5  text-gray-500/90 '>
-                Subdireccion de prspectiva, Informacion y Evaluacion Estrategica <br />
-                Departamento Admnistrativo de Planeacion Distrital <br />
-                Medellin - 2023
+                Subdireccion de Porspectiva, Informacion y Evaluacion Estratégica <br />
+                Departamento Admnistrativo de Planeación Distrital <br />
+                Medellín - 2023
 
                </footer>
           </div> 
