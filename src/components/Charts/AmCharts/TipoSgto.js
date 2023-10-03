@@ -6,43 +6,29 @@ import Charts from "fusioncharts/fusioncharts.charts";
 import ReactFusioncharts from "react-fusioncharts";
 import FusionTheme from "fusioncharts/themes/fusioncharts.theme.fusion";
 
-
-
 Charts(FusionCharts ,ReactFusioncharts, FusionTheme);
 ReactFC.fcRoot(FusionCharts, Charts, FusionTheme);
 import  React,{useEffect, useState, useRef , useMemo} from "react";
 
-
 let dataprint =[]
-
-
 function ChartTipoTematica() {
     const [dateo, setDateo]= useState()
     
-    useEffect(()=>{
-
-        getVotos()
-       }, [])
+    useEffect(()=>{getVotos()}, [])
 
        async function getVotos() {
         try {
-            
           const res = await fetch(
            'http://localhost:5000/api/datos/countsgtoindicador'
           );
           const respuesta = await res.json();
           dataprint.splice(0, dataprint.length);
           respuesta.data.forEach((element) => {
-       
             dataprint.push({
               label: element.find_periocidad_sgto_ind,
               value: element.count
-          
             });
-        
           });
-
-
         } catch (error) {
           console.error("Error ");
         }
@@ -51,7 +37,7 @@ function ChartTipoTematica() {
 
   const dataSource = {
     chart: {
-      caption: "Número de Indicadores por tematica DANE",
+      caption: "Número de Indicadores por periocidad de seguimiento",
       subcaption : "subpiee",
       xaxisname: "Tematicas",
       yaxisname: "total",
@@ -60,24 +46,19 @@ function ChartTipoTematica() {
       theme: "fusion",
       labeldisplay: "Rotate",
       slantlabels: "1"
-
-
-
-   
-    
     },
     data:dateo
   };
   
-        return (
-          <ReactFusioncharts
-          type="column2d"
-            width={'100%'}
-            height={450}
-            dataFormat="JSON"
-            dataSource={dataSource}
-          />
-        );
+    return (
+      <ReactFusioncharts
+        type="column2d"
+        width={'100%'}
+        height={450}
+        dataFormat="JSON"
+        dataSource={dataSource}
+      />
+    );
 
 }
 export default ChartTipoTematica; 

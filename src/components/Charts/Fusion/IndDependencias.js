@@ -4,7 +4,7 @@ import ReactFC from "react-fusioncharts";
 import FusionCharts from "fusioncharts";
 import Charts from "fusioncharts/fusioncharts.charts";
 import ReactFusioncharts from "react-fusioncharts";
-import FusionTheme from "fusioncharts/themes/fusioncharts.theme.fusion";
+import FusionTheme from "fusioncharts/themes/fusioncharts.theme.gammel";
 
 
 
@@ -16,7 +16,7 @@ import  React,{useEffect, useState, useRef , useMemo} from "react";
 let dataprint =[]
 
 
-function ChartTipoTematica(props) {
+function ChartIndDependencias(props) {
     const [dateo, setDateo]= useState()
     
     useEffect(()=>{
@@ -28,14 +28,14 @@ function ChartTipoTematica(props) {
         try {
             
           const res = await fetch(
-           'http://localhost:5000/api/datos/counttematicadane'
+           'http://localhost:5000/api/datos/ndipordependencias'
           );
           const respuesta = await res.json();
           dataprint.splice(0, dataprint.length);
           respuesta.data.forEach((element) => {
        
             dataprint.push({
-              label: element.nom_subtema_dane,
+              label: element.nom_dependencia,
               value: element.count,
               color: props.color,
             });
@@ -51,13 +51,16 @@ function ChartTipoTematica(props) {
 
   const dataSource = {
     chart: {
-      caption: "Número de Indicadores por tematica DANE",
+      caption: " Indicadores por Dependencias",
       subcaption : "subpiee",
-      xaxisname: "Tematicas",
+      xaxisname: "Dependencias",
       yaxisname: "total",
       showvalues: "1",
       formatnumberscale: "0",
-      theme: "fusion",
+      theme: "gammel",
+
+      labeldisplay: "Rotate",
+      slantlabels: "1"
    
     },
     data:dateo
@@ -65,7 +68,7 @@ function ChartTipoTematica(props) {
   
         return (
           <ReactFusioncharts
-            type="bar2d"
+            type="column2d"
             width={'100%'}
             height={800}
             dataFormat="JSON"
@@ -74,4 +77,4 @@ function ChartTipoTematica(props) {
         );
 
 }
-export default ChartTipoTematica; 
+export default ChartIndDependencias; 

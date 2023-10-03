@@ -6,7 +6,8 @@ import dynamic from 'next/dynamic'
 const ChartTipoIndicador = dynamic(() => import('../../../components/Charts/Fusion/TipoInd'), { ssr: false })
 const ChartTipoTematica = dynamic(() => import('../../../components/Charts/Fusion/TipoTematica'), { ssr: false })
 const ChartTipoSgto = dynamic(() => import('../../../components/Charts/AmCharts/TipoSgto'), { ssr: false });
-
+const ChartTematicaAmpliada = dynamic(() => import('../../../components/Charts/Fusion/TipoTematicaAmpliada'), { ssr: false });
+const CharIndDependencias = dynamic(() => import('../../../components/Charts/Fusion/IndDependencias'), { ssr: false });
 
 
 
@@ -143,7 +144,7 @@ const DashIndicadores = () => {
             </div>
 
             <section className=" bg-gray-100/50">
-              <div className="mx-auto max-w-7xl py-8 sm:px-4 sm:py-10 lg:px-2 ">
+              <div className=" ">
                 <ChartTipoTematica   color={'#186F65'}/>
                 <hr />
               </div>
@@ -169,7 +170,7 @@ const DashIndicadores = () => {
                   <div className="rounded-2xl  bg-sky-50/50 shadow-lg shadow-blue-400/50 py-8 text-center ring-1 ring-inset ring-gray-900/5 lg:flex lg:flex-col lg:justify-center lg:py-10">
                     <div className="mx-auto max-w-xs px-24">
                       <p className="text-xl font-semibold text-gray-500 mb-3">
-                       UPRI
+                       UPI
                       </p>
                       <img src="/economia.svg" alt="" srcSet="" />
                       <p className="mt-6 flex items-baseline justify-center gap-x-2">
@@ -188,7 +189,7 @@ const DashIndicadores = () => {
                   <div className="rounded-2xl  bg-sky-50/50 shadow-lg shadow-blue-400/50 py-8 text-center ring-1 ring-inset ring-gray-900/5 lg:flex lg:flex-col lg:justify-center lg:py-10">
                     <div className="mx-auto max-w-xs px-24">
                       <p className="text-xl font-semibold text-gray-600 mb-3">
-                        UOPP
+                        OPP
                       </p>
                       <img src="/sociedad.svg" alt="" srcSet="" />
                       <p className="mt-6 flex items-baseline justify-center gap-x-2">
@@ -207,7 +208,7 @@ const DashIndicadores = () => {
                   <div className="rounded-2xl  bg-sky-50/50 shadow-lg shadow-blue-400/50 py-8 text-center ring-1 ring-inset ring-gray-900/5 lg:flex lg:flex-col lg:justify-center lg:py-10">
                     <div className="mx-auto max-w-xs px-24">
                       <p className="text-xl font-semibold text-gray-600 mb-3">
-                        USPOT
+                        SPOT
                       </p>
                       <img src="/territorio.svg" alt="" srcSet="" />
                       <p className="mt-6 flex items-baseline justify-center gap-x-2">
@@ -225,9 +226,9 @@ const DashIndicadores = () => {
                   <div className="rounded-2xl  bg-sky-50/50 shadow-lg shadow-blue-400/50 py-8 text-center ring-1 ring-inset ring-gray-900/5 lg:flex lg:flex-col lg:justify-center lg:py-10">
                     <div className="mx-auto max-w-xs px-24">
                       <p className="text-lg font-semibold text-gray-600 mb-2">
-                        USPDD
+                        SPDD
                       </p>
-                      <img src="/ficha.svg" alt="" />
+                      <img src="/planiando.svg" alt="" />
 
                       <p className="mt-6 flex items-baseline justify-center gap-x-2">
                         <span className="text-4xl font-bold tracking-tight text-gray-900">
@@ -241,7 +242,12 @@ const DashIndicadores = () => {
                   </div>
                 </div>
               </div>
-
+              <div className="mt-2  p-2 rounded-xl  bg-sky-50/50 shadow-lg shadow-blue-400/50 py-8 text-center ring-1 ring-inset ring-gray-900/5 lg:flex lg:flex-col lg:justify-center lg:py-10">
+<ChartTematicaAmpliada color={'#6499E9'}/>
+</div>
+<div className="mt-2  p-2 rounded-xl  bg-sky-50/50 shadow-lg shadow-blue-400/50 py-8 text-center ring-1 ring-inset ring-gray-900/5 lg:flex lg:flex-col lg:justify-center lg:py-10">
+<CharIndDependencias color={'#4B527E'}/>
+</div>
             </section>
           </div>
           <footer className="text-xs p-5  text-gray-500/90 ">
